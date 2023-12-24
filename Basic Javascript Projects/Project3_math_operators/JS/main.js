@@ -57,9 +57,3 @@ function decrementFunction() {
 
     document.getElementById("answer").innerHTML = A;
 }
-
-function randomNumberFunction() {
-    var random = 0 + (math.random() * 1000);
-
-    document.getElementById("random_number") = random;
-}
