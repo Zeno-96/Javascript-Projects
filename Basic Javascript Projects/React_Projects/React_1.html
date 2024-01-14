@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8" />
+        <title>React Counter</title>
+        <script src="react.js"></script>
+        <script src="react-dom.js"></script>
+        <link rel="stylesheet" href="Fade.css">
+    </head>
+
+    <body>
+        
+        <div id="My_React_Code" style="font-size: 5vw;">
+            <script>
+                document.body.classList.add('fade-out');
+
+                var Counter = React.createClass({
+                    render: function() {
+                        var time_Passed = Math.round(this.props.time_Passed / 100);
+                        var seconds_Passed  = time_Passed / 10 + (time_Passed % 10 ? '' : '.0');
+                        var text = 'My React code started running ' + seconds_Passed + ' seconds ago!';
+                        return React.DOM.p(null, text);
+                    }
+                });
+                
+                var counter_Factory = React.createFactory(Counter);
+
+                var start_Counting = new Date().getTime();
+                setInterval(function() {
+                    ReactDOM.render(
+                        counter_Factory({time_Passed: new Date().getTime() - start_Counting}), document.getElementById("My_React_Code")
+                    );
+                }, 50);
+
+                window.addEventListener('DOMContentLoaded', () => {
+                    document.body.classList.remove('fade-out');
+                });
+            </script>
+        </div>
+
+    </body>
+    
+</html>
